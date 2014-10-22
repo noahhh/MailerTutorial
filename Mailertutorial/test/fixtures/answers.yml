@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one_for_question_one:
+  text: MyText
+  user: two
+  question: one
+  chosen: false
+
+two_for_question_one:
+  text: MyText
+  user: chet
+  question: one
+  chosen: false

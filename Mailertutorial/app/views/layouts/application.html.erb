@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Question Box", root_path %></h1>
+    </li>
+
+
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><%= link_to "All Questions", questions_path %> </li>
+      <% if @current_user %>
+        <li class="active"><%= link_to 'Ask a new question', new_question_path %></li>
+        <li class="active"><%= link_to @current_user.name, questions_path %></li>
+      <% else %>
+        <li class="active"> <%= link_to 'Log in', new_login_path %></li>
+        <li class="active"><%= link_to 'Sign up', new_user_path %></li>
+      <% end %>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <% if @current_user %>
+      <ul class="left">
+        <li> <%= link_to 'Logout', logout_path %></li>
+      </ul>
+    <% end %>
+  </section>
+</nav>
+
+    <!-- <div><%= flash[:notice] %></div>
+    <div>You are logged in as <%= @current_user %></div> -->
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+ <% if @current_user %>
+<div class="mpt"><%= form_for Question.new do |f| %>
+	<% if Question.new.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+			<ul>
+			<% @question.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	</div>
+	<% end %>
+
+	<div class="reask">
+		<h1 class="q"> What's your question? </h1>
+	<div class="field">
+		<%= f.label :title %><br>
+		<%= f.text_field :title %>
+	</div>
+
+	<div class="field">
+		<%= f.label :text %><br>
+		<%= f.text_area :text %>
+	</div>
+
+	<div class="field">
+		<%= f.hidden_field :user, :value => @current_user %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+</div>
+</div>
+	<% end %>
+	<% else %><h3 class="asklogin">
+	<%= link_to "Please log in to ask questions", new_login_path %></h3>
+	<% end %>
+
+<table>
+  <tbody>
+    <% @questions.order(updated_at: :desc).each do |question| %>
+      <tr>
+      <td><div class="reansw"><h2> Unanswered Questions </h2>
+        <h4><%= question.title %></h4>
+        <p><%= question.text %></p>
+        <p><%= link_to 'Show more', question %></p>
+        <p><%= link_to 'Answer', new_question_answer_path(question)	 %></td>
+      </tr>
+    <% end %>
+  </div>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <% @questions.order(updated_at: :desc).each do |question| %>
+      <tr>
+      <td><div class="unansw"><h2> Recently Answered </h2>
+        <h4><%= question.title %></h4>
+        <p><%= question.text %></p>
+        <p><%= link_to 'Show more', question %></p>
+        <p><%= link_to 'Answer', new_question_answer_path(question)	 %></td>
+      </tr>
+    <% end %>
+  </div>
+  </tbody>
+</table>

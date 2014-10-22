@@ -1,0 +1,20 @@
+<div class="row">
+	<h1 class="large-12 columns"> Register or <%= link_to 'Log in', new_login_path %> </h1>
+	<%= simple_form_for @user do |form| %>
+	<div class="large-12 columns">
+		<%= form.input :name %>
+	</div>
+	<div class="large-12 columns">
+		<%= form.input :email %>
+	</div>
+	<div class="large-6 columns">
+		<%= form.input :password %>
+	</div>
+	<div class="large-6 columns">
+		<%= form.input :password_confirmation %>
+	</div>
+	<div class="large-12 columns">
+		<%= form.button :submit, class: "radius small" %>
+	</div>
+	<% end %>
+</div>

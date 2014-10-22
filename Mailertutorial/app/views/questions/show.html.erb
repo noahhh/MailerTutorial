@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question.text %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @question.answer.text %>
+</p>
+
+<%= link_to 'Back', root_path %>

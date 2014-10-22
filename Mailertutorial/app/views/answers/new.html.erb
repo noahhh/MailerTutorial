@@ -1,0 +1,12 @@
+<%= form_for[@question, @answer] do |f| %>
+  <p>
+    <%= f.hidden_field :user, :value => @current_user %>
+  </p>
+  <p>
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
